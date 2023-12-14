@@ -6,7 +6,7 @@
     
     Dob DATE,
     
-    CONSTRAINT USER_PK PRIMARY KEY (User_id));*/
+    CONSTRAINT User_PK PRIMARY KEY (User_id));*/
 
 
 INSERT INTO User_T (User_id,F_name,L_name,Dob) VALUES
