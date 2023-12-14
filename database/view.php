@@ -2,7 +2,7 @@
 
 include "./db.php";
 
-$sql = "SELECT * FROM USER";
+$sql = "SELECT * FROM User_T";
 
 $result = $conn->query($sql);
 // {   id:[1,2,3],
@@ -29,7 +29,7 @@ $result = $conn->query($sql);
 
     <div class="container">
 
-        <h2>USER</h2>
+        <h2>User_T</h2>
 
 <table class="table">
 
@@ -44,15 +44,7 @@ $result = $conn->query($sql);
 
         <th>Phone</th>
 
-        <th>Area</th>
-
-        <th>City</th>
-
-        <th>Email</th>
-
-        <th>Password</th>
-
-        <th>Action</th>
+        <th>Dob</th>
     </tr>
 
     </thead>
@@ -73,11 +65,9 @@ $result = $conn->query($sql);
 
                     <td><?php echo $row['L_name']; ?></td>
 
-                    <td><?php echo $row['Email']; ?></td>
+                    <td><?php echo $row['Phone']; ?></td>
 
-                    <td><?php echo $row['']; ?></td>
-
-                    <td><?php echo $row['password']; ?></td>
+                    <td><?php echo $row['Dob']; ?></td>
 
                     <td>
                         <a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;
