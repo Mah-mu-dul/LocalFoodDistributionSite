@@ -1,12 +1,12 @@
-<?php 
+<?php
 
 include "./db.php";
 
-$sql = "SELECT * FROM USER";
+$sql = "SELECT * FROM users";
 
 $result = $conn->query($sql);
 // {   id:[1,2,3],
-    // name:["a","b","c"]
+// name:["a","b","c"]
 // .....
 // }
 
@@ -21,7 +21,7 @@ $result = $conn->query($sql);
     <title>View Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 </head>
 
@@ -31,71 +31,51 @@ $result = $conn->query($sql);
 
         <h2>USER</h2>
 
-<table class="table">
+        <table class="table">
 
-    <thead>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>dob</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                </tr>
 
-    <tr>
-        <th>User_id</th>
+            </thead>
+            <tbody>
 
-        <th>F_Name</th>
+                <?php
 
-        <th>L_Name</th>
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                ?>
 
-        <th>Phone</th>
+                        <tr>
 
-        <th>Area</th>
+                            <td><?php echo $row['Id']; ?></td>
+                            <td><?php echo $row['Name']; ?></td>
+                            <td><?php echo $row['dob']; ?></td>
+                            <td><?php echo $row['Email']; ?></td>
+                            <td><?php echo $row['Password']; ?></td>
 
-        <th>City</th>
+                            <td>
+                                <a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;
+                                <a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a>
+                            </td>
 
-        <th>Email</th>
+                        </tr>
 
-        <th>Password</th>
+                <?php   }
+                }
+                $conn->close();
+                ?>
 
-        <th>Action</th>
-    </tr>
+            </tbody>
 
-    </thead>
-
-    <tbody> 
-
-        <?php
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-        ?>
-
-                    <tr>
-
-                    <td><?php echo $row['User_id']; ?></td>
-
-                    <td><?php echo $row['F_name']; ?></td>
-
-                    <td><?php echo $row['L_name']; ?></td>
-
-                    <td><?php echo $row['Email']; ?></td>
-
-                    <td><?php echo $row['']; ?></td>
-
-                    <td><?php echo $row['password']; ?></td>
-
-                    <td>
-                        <a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;
-                        <a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a>
-                    </td>
-
-                    </tr>                       
-
-        <?php   }
-            }
-            $conn->close(); 
-        ?>              
-
-    </tbody>
-
-</table>
-<a style="color:black;" class="btn btn-warning" href="form.php"><b>Create User</b></a>
-    </div> 
+        </table>
+        <a style="color:black;" class="btn btn-warning" href="form.php"><b>Create User</b></a>
+    </div>
 
 </body>
 
