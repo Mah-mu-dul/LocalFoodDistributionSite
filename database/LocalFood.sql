@@ -6,3 +6,4 @@ CREATE TABLE
         Phone NUMERIC(11, 0),
         Dob DATE,
     );
+    

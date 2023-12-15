@@ -44,7 +44,7 @@
                     <h5 class="card-title fw-semibold mb-4">Add new Product</h5>
                     <div class="card">
                         <div class="card-body ">
-                            <form onsubmit="handleSubmit(event)">
+                            <form id="form" onsubmit="handleSubmit(event)">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Product Name</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1"
@@ -83,12 +83,6 @@
             </div>
         </div>
     </div>
-    <script>
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            console.log("something");
-        }
-    </script>
 </body>
 
 </html>

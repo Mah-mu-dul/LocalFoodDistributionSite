@@ -2,7 +2,7 @@
 
 include "./db.php";
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM User_T";
 
 $result = $conn->query($sql);
 // {   id:[1,2,3],
@@ -29,18 +29,31 @@ $result = $conn->query($sql);
 
     <div class="container">
 
-        <h2>USER</h2>
+        <h2>User_T</h2>
 
         <table class="table">
 
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>dob</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                </tr>
+    <thead>
+
+    <tr>
+        <th>User_id</th>
+
+        <th>F_Name</th>
+
+        <th>L_Name</th>
+
+        <th>Phone</th>
+
+        <th>Area</th>
+
+        <th>City</th>
+
+        <th>Email</th>
+
+        <th>Password</th>
+
+        <th>Action</th>
+    </tr>
 
             </thead>
             <tbody>
@@ -53,11 +66,17 @@ $result = $conn->query($sql);
 
                         <tr>
 
-                            <td><?php echo $row['Id']; ?></td>
-                            <td><?php echo $row['Name']; ?></td>
-                            <td><?php echo $row['dob']; ?></td>
-                            <td><?php echo $row['Email']; ?></td>
-                            <td><?php echo $row['Password']; ?></td>
+                    <td><?php echo $row['User_id']; ?></td>
+
+                    <td><?php echo $row['F_name']; ?></td>
+
+                    <td><?php echo $row['L_name']; ?></td>
+
+                    <td><?php echo $row['Email']; ?></td>
+
+                    <td><?php echo $row['']; ?></td>
+
+                    <td><?php echo $row['password']; ?></td>
 
                             <td>
                                 <a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;
