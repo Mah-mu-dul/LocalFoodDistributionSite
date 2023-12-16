@@ -1,89 +1,97 @@
 <?php 
-include "db.php";
 
-  if (isset($_POST['submit'])) {
+include "./db.php";
 
-    $first_name = $_POST['firstname'];
+$sql = "SELECT id, firstname as fname, lastname, email, gender, password FROM users";
 
-    $last_name = $_POST['lastname'];
+$result = $conn->query($sql);
+// {   id:[1,2,3],
+    // name:["a","b","c"]
+// .....
+// }
 
-    $email = $_POST['email'];
-
-    $password = $_POST['password'];
-
-    $gender = $_POST['gender'];
-
-    $sql = "INSERT INTO `users`(`lastname`, `firstname`, `email`, `password`, `gender`) VALUES ('$last_name','$first_name','$email','$password','$gender')";
-
-    $result = $conn->query($sql);
-
-    if ($result == TRUE) {
-
-      echo "New record created successfully!";
-      header( "refresh:2; url=./view.php" ); 
-
-    }else{
-
-      echo "Error:". $sql . "<br>". $conn->error;
-
-    } 
-
-    $conn->close();
-
-  }
 ?>
 
 <!DOCTYPE html>
 
 <html>
 
+<head>
+
+    <title>View Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+</head>
+
 <body>
 
-<h2>Signup Form</h2>
+    <div class="container">
 
-<form action="" method="POST">
+        <h2>Users</h2>
 
-  <fieldset>
+<table class="table">
 
-    <legend>Personal information:</legend>
+    <thead>
 
-    First name:<br>
+    <tr>
+        <th>ID</th>
 
-    <input type="text" name="firstname">
+        <th>First Name</th>
 
-    <br>
+        <th>Last Name</th>
 
-    Last name:<br>
+        <th>Email</th>
 
-    <input type="text" name="lastname">
+        <th>Gender</th>
 
-    <br>
+        <th>Password</th>
 
-    Email:<br>
+        <th>Action</th>
+    </tr>
 
-    <input type="email" name="email">
+    </thead>
 
-    <br>
+    <tbody> 
 
-    Password:<br>
+        <?php
 
-    <input type="password" name="password">
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+        ?>
 
-    <br>
+                    <tr>
 
-    Gender:<br>
+                    <td><?php echo $row['id']; ?></td>
 
-    <input type="radio" name="gender" value="Male">Male
+                    <td><?php echo $row['fname']; ?></td>
 
-    <input type="radio" name="gender" value="Female">Female
+                    <td><?php echo $row['lastname']; ?></td>
 
-    <br><br>
+                    <td><?php echo $row['email']; ?></td>
 
-    <input type="submit" name="submit" value="Submit">
+                    <td><?php echo $row['gender']; ?></td>
 
-  </fieldset>
+                    <td><?php echo $row['password']; ?></td>
 
-</form>
+                    <td>
+                        <a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;
+                        <a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a>
+                    </td>
+
+                    </tr>                       
+
+        <?php   }
+            }
+            $conn->close(); 
+        ?>              
+
+    </tbody>
+
+</table>
+<a style="color:black;" class="btn btn-warning" href="form.php"><b>Create User</b></a>
+    </div> 
 
 </body>
 
