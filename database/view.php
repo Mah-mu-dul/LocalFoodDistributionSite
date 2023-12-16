@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include "./db.php";
 
@@ -6,7 +6,7 @@ $sql = "SELECT * FROM User_T";
 
 $result = $conn->query($sql);
 // {   id:[1,2,3],
-    // name:["a","b","c"]
+// name:["a","b","c"]
 // .....
 // }
 
@@ -21,7 +21,7 @@ $result = $conn->query($sql);
     <title>View Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 </head>
 
@@ -31,7 +31,7 @@ $result = $conn->query($sql);
 
         <h2>User_T</h2>
 
-<table class="table">
+        <table class="table">
 
     <thead>
 
@@ -44,20 +44,27 @@ $result = $conn->query($sql);
 
         <th>Phone</th>
 
-        <th>Dob</th>
+        <th>Area</th>
+
+        <th>City</th>
+
+        <th>Email</th>
+
+        <th>Password</th>
+
+        <th>Action</th>
     </tr>
 
-    </thead>
+            </thead>
+            <tbody>
 
-    <tbody> 
+                <?php
 
-        <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                ?>
 
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-        ?>
-
-                    <tr>
+                        <tr>
 
                     <td><?php echo $row['User_id']; ?></td>
 
@@ -65,27 +72,29 @@ $result = $conn->query($sql);
 
                     <td><?php echo $row['L_name']; ?></td>
 
-                    <td><?php echo $row['Phone']; ?></td>
+                    <td><?php echo $row['Email']; ?></td>
 
-                    <td><?php echo $row['Dob']; ?></td>
+                    <td><?php echo $row['']; ?></td>
 
-                    <td>
-                        <a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;
-                        <a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a>
-                    </td>
+                    <td><?php echo $row['password']; ?></td>
 
-                    </tr>                       
+                            <td>
+                                <a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;
+                                <a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a>
+                            </td>
 
-        <?php   }
-            }
-            $conn->close(); 
-        ?>              
+                        </tr>
 
-    </tbody>
+                <?php   }
+                }
+                $conn->close();
+                ?>
 
-</table>
-<a style="color:black;" class="btn btn-warning" href="form.php"><b>Create User</b></a>
-    </div> 
+            </tbody>
+
+        </table>
+        <a style="color:black;" class="btn btn-warning" href="form.php"><b>Create User</b></a>
+    </div>
 
 </body>
 

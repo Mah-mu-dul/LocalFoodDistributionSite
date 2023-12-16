@@ -7,6 +7,8 @@
   <title>Village Vibe</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
 </head>
 
 <body>
@@ -22,24 +24,78 @@
               <div class="card-body">
                 <h1>Village Vibe</h1>
                 <p class="text-center">Your Social Campaigns</p>
-                <form>
-                  <div class="mb-3">
-                    <label for="exampleInputtext1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  </div>
-                  <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                  </div>
-                  <a href="./index2.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a>
-                  <div class="d-flex align-items-center justify-content-center">
-                    <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
-                    <a class="text-primary fw-bold ms-2" href="./authentication-login.html">Sign In</a>
-                  </div>
+                <form action="handleSubmit" method="POST">
+                  <fieldset class="d-flex flex-wrap justify-content-between gap-2">
+                    <legend>Personal information:</legend>
+                    <span>
+                      UserId:<br>
+                      <input type="number" name="user_id">
+                      <br>
+                    </span>
+                    <span>
+                      First name:<br>
+                      <input type="text" name="firstname">
+                      <br>
+                    </span>
+                    <span>
+                      Last name:<br>
+                      <input type="text" name="lastname">
+                      <br>
+                    </span>
+
+                    <span>
+                      Phone:<br>
+                      <input type="Phone" name="Phone">
+                      <br>
+                    </span>
+                    <span>
+                      House:<br>
+                      <input type="House" name="House">
+                      <br>
+                    </span>
+                    <span>
+                      Road:<br>
+                      <input type="Road" name="Road">
+                      <br>
+                    </span>
+                    <span>
+                      Area:<br>
+                      <input type="Area" name="Area">
+                      <br>
+                    </span>
+                    <span>
+                      City:<br>
+                      <input type="City" name="City">
+                      <br>
+                    </span>
+                    <span>
+                      Email:<br>
+                      <input type="email" name="email">
+                      <br>
+                    </span>
+                    <span>
+                      Password:<br>
+                      <input type="password" name="password">
+                      <br>
+                    </span>
+                    <span>
+                      User type:<br>
+                      <select name="uesr_type" id="">
+                        <option value="Admin">Admin</option>
+                        <option value="Seller">Seller</option>
+                        <option value="Buyer">Buyer</option>
+                      </select>
+                    </span>
+                    <span>
+                      Date f Birth<br>
+                      <input type="date" name="password">
+                    </span>
+                    <span>
+                      NID<br>
+                      <input type="number" name="password">
+                    </span>
+                    <input type="submit" name="submit" value="Submit">
+                  </fieldset>
                 </form>
               </div>
             </div>

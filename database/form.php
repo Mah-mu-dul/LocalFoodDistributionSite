@@ -1,36 +1,33 @@
-<?php 
+<?php
 include "db.php";
 
-  if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
-    $first_name = $_POST['firstname'];
+  $first_name = $_POST['firstname'];
 
-    $last_name = $_POST['lastname'];
+  $last_name = $_POST['lastname'];
 
-    $email = $_POST['email'];
+  $email = $_POST['email'];
 
-    $password = $_POST['password'];
+  $password = $_POST['password'];
 
-    $gender = $_POST['gender'];
+  $gender = $_POST['gender'];
 
-    $sql = "INSERT INTO `users`(`lastname`, `firstname`, `email`, `password`, `gender`) VALUES ('$last_name','$first_name','$email','$password','$gender')";
+  $sql = "INSERT INTO `users`(`lastname`, `firstname`, `email`, `password`, `gender`) VALUES ('$last_name','$first_name','$email','$password','$gender')";
 
-    $result = $conn->query($sql);
+  $result = $conn->query($sql);
 
-    if ($result == TRUE) {
+  if ($result == TRUE) {
 
-      echo "New record created successfully!";
-      header( "refresh:2; url=./view.php" ); 
+    echo "New record created successfully!";
+    header("refresh:2; url=./view.php");
+  } else {
 
-    }else{
-
-      echo "Error:". $sql . "<br>". $conn->error;
-
-    } 
-
-    $conn->close();
-
+    echo "Error:" . $sql . "<br>" . $conn->error;
   }
+
+  $conn->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,51 +36,51 @@ include "db.php";
 
 <body>
 
-<h2>Signup Form</h2>
+  <h2>Signup Form</h2>
 
-<form action="" method="POST">
+  <form action="" method="POST">
 
-  <fieldset>
+    <fieldset>
 
-    <legend>Personal information:</legend>
+      <legend>Personal information:</legend>
 
-    First name:<br>
+      First name:<br>
 
-    <input type="text" name="firstname">
+      <input type="text" name="firstname">
 
-    <br>
+      <br>
 
-    Last name:<br>
+      Last name:<br>
 
-    <input type="text" name="lastname">
+      <input type="text" name="lastname">
 
-    <br>
+      <br>
 
-    Email:<br>
+      Email:<br>
 
-    <input type="email" name="email">
+      <input type="email" name="email">
 
-    <br>
+      <br>
 
-    Password:<br>
+      Password:<br>
 
-    <input type="password" name="password">
+      <input type="password" name="password">
 
-    <br>
+      <br>
 
-    Gender:<br>
+      Gender:<br>
 
-    <input type="radio" name="gender" value="Male">Male
+      <input type="radio" name="gender" value="Male">Male
 
-    <input type="radio" name="gender" value="Female">Female
+      <input type="radio" name="gender" value="Female">Female
 
-    <br><br>
+      <br><br>
 
-    <input type="submit" name="submit" value="Submit">
+      <input type="submit" name="submit" value="Submit">
 
-  </fieldset>
+    </fieldset>
 
-</form>
+  </form>
 
 </body>
 

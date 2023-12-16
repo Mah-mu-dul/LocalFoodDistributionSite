@@ -1,19 +1,12 @@
 <?php
 
 $servername = "localhost";
-
 $username = "root";
-
 $password = "";
-
-$dbname = "LocalFood";
-
+$dbname = "localfood";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
 
     die("Connection failed: " . $conn->connect_error);
-
 }
-
-?>
