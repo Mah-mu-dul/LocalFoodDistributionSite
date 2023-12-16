@@ -44,38 +44,47 @@
                     <h5 class="card-title fw-semibold mb-4">Add new Product</h5>
                     <div class="card">
                         <div class="card-body ">
-                            <form id="form" onsubmit="handleSubmit(event)">
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Product Name</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Price</label>
-                                    <input type="number" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">vat</label>
-                                    <input type="number" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Strock quantity</label>
-                                    <input type="number" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Image URL</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Manufecture Date</label>
-                                    <input type="date" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Expire Date</label>
-                                    <input type="date" class="form-control" id="exampleInputPassword1">
-                                </div>
+                            <form id="productForm" onsubmit="handleSubmit(event)" class="">
+                                <span class="mb-3">
+                                    <label class="form-label">Product ID</label>
+                                    <input value="1254785125" type="number" name="Product_id" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Seller Id</label>
+                                    <input value="1254785426" type="number" name="User_id" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Product Name</label>
+                                    <input value="oil" name="Name" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Image URL</label>
+                                    <input
+                                        value="https://img.freepik.com/premium-photo/corn-top-view-background-ai-generated-image_605681-317.jpg"
+                                        name="Image_URL" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Quantity</label>
+                                    <input value="30" type="number" name="Quantity" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Manufacture Date</label>
+                                    <input value="" name="Manufacture_date" type="date" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Expire Date</label>
+                                    <input value="" name="Expire_date" type="date" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Price</label>
+                                    <input value="300" name="Price" type="Number" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Vat</label>
+                                    <input value="3" name="Vat" type="Number" class="form-control">
+                                </span>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <input type="submit" class="btn btn-primary"></input>
                             </form>
                         </div>
                     </div>
@@ -83,6 +92,37 @@
             </div>
         </div>
     </div>
+    <script>
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+
+            // Get the form element by its ID
+            const form = document.getElementById('productForm');
+            const formData = new FormData(form);
+
+            fetch('http://localhost:7000/addproduct', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(Object.fromEntries(formData.entries()))
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Server response:', data);
+                    // Handle the response as needed
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+        }
+    </script>
 </body>
 
 </html>

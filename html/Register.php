@@ -12,23 +12,21 @@ if (isset($_POST['submit'])) {
     $Road = $_POST['Road'];
     $Area = $_POST['Area'];
     $City = $_POST['City'];
-    $City = $_POST['City'];
     $Email = $_POST['Email'];
     $Password = $_POST['Password'];
     $User_type = $_POST['User_type'];
-    $Dob = $_POST['dob'];
+    $Dob = $_POST['Dob'];
     $NID = $_POST['NID'];
 
 
-
-    $sql = "INSERT INTO `User_T`(`User_id`,`F_name`,`L_name`,`Phone`,`House`,`Road`,`Area`,`City`,`City`,`Email`,`Password`,`User_type`,`Dob`,`NID`) 
-    VALUES ('$user_id','$user_id','$firstname','$lastname','$Phone','$House','$Road','$Area','$City','$City','$Email','$Password','$User_type','$dob','$NID')";
+    $sql = "INSERT INTO `User_T`(`User_id`,`F_name`,`L_name`,`Phone`,`House`,`Road`,`Area`,`City`,`Email`,`Password`,`User_type`,`Dob`,`NID`) 
+    VALUES ('$User_id','$F_name','$L_name','$Phone','$House','$Road','$Area','$City','$Email','$Password','$User_type','$Dob','$NID')";
     $result = $conn->query($sql);
 
     if ($result == TRUE) {
 
         echo "New record created successfully!";
-        header("refresh:2; url=./view.php");
+        // header("refresh:2; url=success.php");
     } else {
 
         echo "Error:" . $sql . "<br>" . $conn->error;
@@ -66,69 +64,69 @@ if (isset($_POST['submit'])) {
                                         <legend>Personal information:</legend>
                                         <span>
                                             UserId:<br>
-                                            <input type="number" name="user_id">
+                                            <input ztype="number" name="user_id">
                                             <br>
                                         </span>
                                         <span>
                                             First name:<br>
-                                            <input type="text" name="firstname">
+                                            <input value="Yousra" type="text" name="firstname">
                                             <br>
                                         </span>
                                         <span>
                                             Last name:<br>
-                                            <input type="text" name="lastname">
+                                            <input value="Tabassum" type="text" name="lastname">
                                             <br>
                                         </span>
                                         <span>
                                             Phone:<br>
-                                            <input type="text" name="Phone">
+                                            <input value="78965412589" type="text" name="Phone">
                                             <br>
                                         </span>
                                         <span>
                                             House:<br>
-                                            <input type="text" name="House">
+                                            <input value="Boro Bari" type="text" name="House">
                                             <br>
                                         </span>
                                         <span>
                                             Road:<br>
-                                            <input type="text" name="Road">
+                                            <input value="45214" type="text" name="Road">
                                             <br>
                                         </span>
                                         <span>
                                             Area:<br>
-                                            <input type="text" name="Area">
+                                            <input value="Badda" type="text" name="Area">
                                             <br>
                                         </span>
                                         <span>
                                             City:<br>
-                                            <input type="text" name="City">
+                                            <input value="Dhaka" type="text" name="City">
                                             <br>
                                         </span>
                                         <span>
                                             Email:<br>
-                                            <input type="email" name="email">
+                                            <input value="yousra@taba.ssum" type="email" name="Email">
                                             <br>
                                         </span>
                                         <span>
                                             Password:<br>
-                                            <input type="password" name="password">
+                                            <input value="onekkichu" type="password" name="Password">
                                             <br>
                                         </span>
                                         <span>
                                             User type:<br>
-                                            <select name="uesr_type" id="">
+                                            <select name="User_type" id="">
                                                 <option value="Admin">Admin</option>
-                                                <option value="Seller">Seller</option>
+                                                <option selected value="Seller">Seller</option>
                                                 <option value="Buyer">Buyer</option>
                                             </select>
                                         </span>
                                         <span>
                                             Date f Birth<br>
-                                            <input type="date" name="dob">
+                                            <input value="2014-02-09" type="date" name="Dob">
                                         </span>
                                         <span>
                                             NID<br>
-                                            <input type="number" name="NID">
+                                            <input value="1254785214" type="number" name="NID">
                                         </span>
                                         <input type="submit" name="submit" value="Submit">
                                     </fieldset>

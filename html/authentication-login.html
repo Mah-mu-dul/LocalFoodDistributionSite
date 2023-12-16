@@ -26,13 +26,12 @@
                 <p class="text-center">Your Social Campaigns</p>
                 <form id="loginForm" onsubmit="checkLogin(event)">
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input value="admin" type="text" id="username" name="username" class="form-control" aria-describedby="emailHelp"
-                      required>
+                    <label class="form-label">Username</label>
+                    <input value="112254" type="text" id="User_id" name="User_id" class="form-control" required>
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input value="1122" type="password" id="password" name="password" required class="form-control">
+                    <label class="form-label">Password</label>
+                    <input value="1122" type="password" id="password" name="Password" required class="form-control">
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
@@ -59,24 +58,27 @@
   <!-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script> -->
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const checkLogin = (event) => {
-      event.preventDefault(); // Prevents the default form submission
+    async function checkLogin(event) {
+      event.preventDefault();
+      const formData = new FormData(document.getElementById('loginForm'));
 
-      // Get values from the form
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
-      console.log(username + password)
 
-      // Replace the condition below with your actual authentication logic
-      if (username === 'admin' && password === '1122') {
-        window.location.href = './index2.html'; // Redirect to the dashboard page
-      } else {
-        alert('Invalid username or password. Please try again.');
-      }
+      await fetch('http://localhost:7000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Object.fromEntries(formData.entries()))
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data) {
 
-      return false; // Prevents further execution and propagation of the event
-
+          }
+        })
     }
+
+
   </script>
 </body>
 

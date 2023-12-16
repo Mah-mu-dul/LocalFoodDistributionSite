@@ -23,64 +23,63 @@
             <div class="card mb-0">
               <div class="card-body">
                 <h1>Village Vibe</h1>
-                <p class="text-center">Your Social Campaigns</p>
-                <form action="handleSubmit" method="POST">
+                <form id="userForm" onsubmit="handleSubmit(event)">
                   <fieldset class="d-flex flex-wrap justify-content-between gap-2">
-                    <legend>Personal information:</legend>
+                    <legend>Registration Form</legend>
                     <span>
                       UserId:<br>
-                      <input type="number" name="user_id">
+                      <input class="form-control" type="number" required name="user_id">
                       <br>
                     </span>
                     <span>
                       First name:<br>
-                      <input type="text" name="firstname">
+                      <input class="form-control" type="text" name="F_name">
                       <br>
                     </span>
                     <span>
                       Last name:<br>
-                      <input type="text" name="lastname">
+                      <input class="form-control" type="text" name="L_name">
                       <br>
                     </span>
 
                     <span>
                       Phone:<br>
-                      <input type="Phone" name="Phone">
+                      <input class="form-control" type="Phone" name="Phone">
                       <br>
                     </span>
                     <span>
                       House:<br>
-                      <input type="House" name="House">
+                      <input class="form-control" type="House" name="House">
                       <br>
                     </span>
                     <span>
                       Road:<br>
-                      <input type="Road" name="Road">
+                      <input class="form-control" type="Road" name="Road">
                       <br>
                     </span>
                     <span>
                       Area:<br>
-                      <input type="Area" name="Area">
+                      <input class="form-control" type="Area" name="Area">
                       <br>
                     </span>
                     <span>
                       City:<br>
-                      <input type="City" name="City">
+                      <input class="form-control" type="City" name="City">
                       <br>
                     </span>
                     <span>
                       Email:<br>
-                      <input type="email" name="email">
+                      <input class="form-control" type="email" name="email">
                       <br>
                     </span>
                     <span>
                       Password:<br>
-                      <input type="password" name="password">
+                      <input class="form-control" type="password" name="password">
                       <br>
                     </span>
                     <span>
                       User type:<br>
-                      <select name="uesr_type" id="">
+                      <select name="user_type" id="" class=" form-select " aria-label="Small select example">
                         <option value="Admin">Admin</option>
                         <option value="Seller">Seller</option>
                         <option value="Buyer">Buyer</option>
@@ -88,13 +87,13 @@
                     </span>
                     <span>
                       Date f Birth<br>
-                      <input type="date" name="password">
+                      <input class="form-control" type="date" name="Dob">
                     </span>
                     <span>
                       NID<br>
-                      <input type="number" name="password">
+                      <input class="form-control" type="number" name="NID">
                     </span>
-                    <input type="submit" name="submit" value="Submit">
+                    <input class="form-control btn btn-primary" type="submit" name="submit" value="Submit">
                   </fieldset>
                 </form>
               </div>
@@ -106,6 +105,38 @@
   </div>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+  <script>
+    const handleSubmit = e => {
+      e.preventDefault()
+      const form = document.getElementById('userForm');
+      const formData = new FormData(form);
+
+      fetch('http://localhost:7000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Object.fromEntries(formData.entries()))
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Server response:', data);
+          // Handle the response as needed
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+        });
+    }
+
+  </script>
 </body>
 
 </html>
