@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Vibe</title>
+
+</head>
+
+<body>
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <ul id="sidebarnav">
+            <li class="nav-small-cap">
+                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="./index2.html" aria-expanded="false">
+                    <span>
+                        <i class="ti ti-layout-dashboard"></i>
+                    </span>
+                    <span class="hide-menu">Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="./AddProduct.html" aria-expanded="false">
+                    <span>
+                        <i class="ti ti-layout-dashboard"></i>
+                    </span>
+                    <span class="hide-menu">Add new Product</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+    <div class="container-fluid">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="card w-50">
+                <div class="card-body">
+                    <h5 class="card-title fw-semibold mb-4">Add new Product</h5>
+                    <div class="card">
+                        <div class="card-body ">
+                            <form method="post">
+                                <span class="mb-3">
+                                    <label class="form-label">Product ID</label>
+                                    <input value="1254785125" type="number" name="Product_id" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Seller Id</label>
+                                    <input value="1254785426" type="number" name="User_id" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Product Name</label>
+                                    <input value="oil" name="Name" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Quantity</label>
+                                    <input value="30" type="number" name="Quantity" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Manufacture Date</label>
+                                    <input value="" name="Manufacture_date" type="date" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Expire Date</label>
+                                    <input value="" name="Expire_date" type="date" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Price</label>
+                                    <input value="300" name="Price" type="Number" class="form-control">
+                                </span>
+                                <span class="mb-3">
+                                    <label class="form-label">Vat</label>
+                                    <input value="3" name="Vat" type="Number" class="form-control">
+                                </span>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        const handleSubmit = e => {
+        }
+    </script>
+</body>
+
+</html>

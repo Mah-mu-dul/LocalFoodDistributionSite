@@ -193,81 +193,8 @@
     </div>
     <div class="container-fluid">
 
-      <div class="fruit_container">
-        <div class="box">
-          <img src="https://marketbangla-static.s3-ap-southeast-1.amazonaws.com/products/41ynBzZohYwAtSzhVbgvci.jpg"
-            alt="">
-          <div class="link_box">
-            <h5>
-              Bash Kurul
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img
-            src="https://img.freepik.com/premium-photo/corn-top-view-background-ai-generated-image_605681-317.jpg?w=740">
-          <div class="link_box">
-            <h5>
-              Corn
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img
-            src="https://img.freepik.com/free-photo/cereals_1368-8658.jpg?w=740&t=st=1701977792~exp=1701978392~hmac=d9c912143e1e6e4734ba435a11042ddd03380da51bd1c97ca8098d919341704d"
-            alt="">
-          <div class="link_box">
-            <h5>
-              Banana
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img
-            src="https://img.freepik.com/free-photo/black-rice-form-heart_23-2148180884.jpg?w=740&t=st=1701978001~exp=1701978601~hmac=5a91eea0bac1e48c7a96ceb37bff7c28ee7fa214d91c62e531171777295c5de0"
-            alt="">
-          <div class="link_box">
-            <h5>
-              Black Seeds
-            </h5>
-            <a href="/cart.html">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="https://backoffice.daily-bangladesh.com/media/imgAll/2020June/xx-2010030549.jpg" alt="">
-          <div class="link_box">
-            <h5>
-              Strawberry
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>  
-        <div class="box">
-          <img
-            src="https://images.immediate.co.uk/production/volatile/sites/30/2021/02/almonds-9e25ce7.jpg?quality=90&resize=556,505"
-            alt="">
-          <div class="link_box">
-            <h5>
-              Mango
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
+      <div id="product-container" class="fruit_container">
+
 
       </div>
     </div>
@@ -517,7 +444,40 @@
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/custom.js"></script>
+  <script>
+    const productContainer = document.getElementById('product-container');
 
+    fetch('http://localhost:7000/getProducts')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Log the user data to the console
+        console.log('User Data:', data);
+        data.forEach(item => {
+          const html = `
+                <div class="box">
+                  <img src="${item.Image_URL}" alt="">
+                  <div class="link_box">
+                    <h5>${item.Name}</h5>
+                    <a href="${item.buyLink}" target="_blank">Buy Now</a>
+                  </div>
+                </div>
+                `;
+
+          // Append the HTML to the productC
+          productContainer.innerHTML += html;
+
+        })
+
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      });
+  </script>
 </body>
 
 </html>
