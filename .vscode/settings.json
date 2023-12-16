@@ -9,8 +9,8 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "localFood",
-            "database": "localfood",
+            "name": "LocalFood",
+            "database": "LocalFood",
             "username": "root",
             "password": ""
         }
